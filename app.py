@@ -16,10 +16,31 @@ def load_users():
         return []
     
 def login_page():
-    st.title("Login")
+    st.title("Log in")
     username = st.text_input("Enter username: ")
 
-    if st.button("Login"):
+    col1, col2 = st.columns([1, 1])
+    with col1:
+        signup_clicked = st.button("Sign up", use_container_width=True)
+    with col2:
+        login_clicked = st.button("Log in", use_container_width=True)
+
+    if signup_clicked:
+        if username:
+            users = load_users()
+            if username in users:
+                st.warning("Username already exists!")
+            else:
+                try:
+                    with open("users.txt", "a", encoding="utf-8") as file:
+                        file.write(username + "\n")
+                    st.success("Register successfully!!!")   
+                except Exception as e:
+                    st.error(f"Error when registering: {e}")
+        else:
+            st.warning("Please enter username!!!")
+
+    if login_clicked:
         if username:
             users = load_users()
             if username in users:
