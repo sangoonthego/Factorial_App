@@ -45,4 +45,4 @@ Try the app here: [https://factorialapp-jkpdg9xu8txviidqrrvmve.streamlit.app](ht
 
 ## License
 
-This project is for
+This project is for educational purposes.
